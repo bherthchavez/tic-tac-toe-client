@@ -31,9 +31,12 @@ function App() {
   }
 
   const handlePlayGame = () => {
-    if (!Object.values(playerNames).includes('') && playerNames.player1.toUpperCase() !== playerNames.player2.toUpperCase())
-      setNewGame(false)
-      setplayGame(true)
+
+   
+    if (playerNames.player1.toUpperCase() !== playerNames.player2.toUpperCase())
+      
+    setNewGame(false)
+    setplayGame(true)
 
     setSessionGame({
       round: 1,
@@ -51,17 +54,17 @@ function App() {
     })
   }
 
-  const resetGame = ()=>{
-    setplayGame (prev => !prev)
+  const resetGame = () => {
+    setplayGame(prev => !prev)
     setHistory([...history, sessionGame])
     setPlayerNames({ player1: '', player2: '' })
-   
+
   }
 
 
-  const handleExit = ()=>{
-    setplayGame (prev => !prev)
- 
+  const handleExit = () => {
+    setplayGame(prev => !prev)
+
   }
 
   return (
