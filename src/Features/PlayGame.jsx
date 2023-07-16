@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import x from '../assets/x.png';
 import o from '../assets/o.png';
 import useApi from '../hooks/useAPI';
@@ -10,6 +11,7 @@ import useApi from '../hooks/useAPI';
 const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) => {
 
     const { addToHistory } = useApi();
+
 
     const [board, setBoard] = useState(Array(9).fill(''));
     const [player, setPlayer] = useState('X');
@@ -30,7 +32,6 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) 
             hour12: true,
         })
     }
-
     const winningConditions = [
         [0, 1, 2],
         [3, 4, 5],
@@ -41,6 +42,18 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) 
         [0, 4, 8],
         [2, 4, 6]
     ];
+
+    console.log(winner, player)
+
+    useEffect(() => {
+        const saveGame = async () => {
+            if (winner && !Object.values(sessionGame).includes('')) {
+                await handleAddToHistory()
+            }
+        }
+        saveGame()
+    }, [winner])
+
 
     const checkWinner = (newBoard) => {
 
@@ -60,7 +73,6 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) 
                         date: getDate()
                     }
                 )
-                return;
             }
         }
 
@@ -95,7 +107,6 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) 
         setWinner(null);
         setPlayer('X');
         setRounds(rounds + 1)
-        await handleAddToHistory()
     };
 
 
@@ -113,7 +124,6 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) 
         setWinner(null);
         setPlayer('X');
         setRounds(rounds + 1)
-        await handleAddToHistory()
         handleExitGame()
     }
 
