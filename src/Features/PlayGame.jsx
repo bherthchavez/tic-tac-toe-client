@@ -128,8 +128,6 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) 
         handleExitGame()
     }
 
-console.log(player)
-
     return (
         <>
 
