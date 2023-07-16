@@ -128,7 +128,7 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) 
         handleExitGame()
     }
 
-
+console.log(player)
 
     return (
         <>
@@ -162,7 +162,7 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) 
                 <div className='flex justify-between text-center font-bold text-xs'>
                     <div className={` ${winner && winner !== `X` ? `bg-gray-200` : winner && winner === 'X' ? 'bg-green-200' : player === 'X' ? `bg-red-100` : `bg-gray-200`} flex gap-2 items-center p-2 rounded-lg`}>
                         <div className='flex flex-col  items-center'>
-                            <img className={`${winner && winner !== 'X' ? `grayscale` : winner && winner === 'X' ? '' : player !== 'X' && 'grayscale'}w-5 h-5 sm:w-9 sm:h-9`} src={x} alt="icon" />
+                            <img className={`${winner && winner === 'X' ? 'bg-green-200' : winner && winner !== 'X' ? `grayscale` : player !== 'X' ? `grayscale` :  ``} w-5 h-5 sm:w-9 sm:h-9`} src={x} alt="icon" />
                         </div>
 
                         <div className='w-14 sm:w-20'>
