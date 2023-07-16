@@ -36,7 +36,7 @@ const SetupGame = ({ playerNames, setPlayerNames, handleExitGame, handlePlayGame
                     className={`${Object.values(playerNames).includes('') ? 'bg-gray-500 hover:bg-gray-600' : 'bg-green-500 hover:bg-green-600 '} w-auto  text-gray-100 p-2 rounded-md mt-10`}
                     onClick={handleSetPlayerName}
                 >
-                    { Object.values(playerNames).includes('')   ? 'Set Default Name' : 'Play Game'}</button>
+                    { Object.values(playerNames).includes('')   ? 'Set Default Name' : 'Start Game'}</button>
                 <button
                     onClick={handleExitGame}
                     className='w-auto hover:bg-red-100 border border-red-600 text-red-700 p-2 rounded-md'
