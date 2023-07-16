@@ -73,7 +73,7 @@ function App() {
   return (
     <>
       <div className="flex flex-col items-center h-screen bg-slate-100 text-gray-900">
-        <div className="flex gap-2 px-20 sm:px-10 flex-row items-center justify-center text-3xl font-bold mb-7 italic w-full sm:w-72 sm:rounded-md sm:mt-4 h-16 bg-orange-100 "> 
+        <div className="flex gap-2 px-20 sm:px-10 flex-row items-center justify-center text-3xl font-bold mb-7 italic w-full sm:w-72 sm:rounded-md sm:mt-4 h-16  "> 
          {/* <span className="text-red-700">Tic </span>
           <span className="text-green-700">Tac </span>
           <span className="text-blue-700">Toe </span> */}
