@@ -19,7 +19,8 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) 
     const [rounds, setRounds] = useState(1)
     const [playerScore, setPlayerScore] = useState({
         player1: 0,
-        player2: 0
+        player2: 0,
+        draw: 0
     })
 
     const getDate = () => {
@@ -42,8 +43,6 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) 
         [0, 4, 8],
         [2, 4, 6]
     ];
-
-    console.log(winner, player)
 
     useEffect(() => {
         const saveGame = async () => {
@@ -73,11 +72,13 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) 
                         date: getDate()
                     }
                 )
+                return
             }
         }
 
         if (!newBoard.includes('')) {
             setWinner('Draw');
+            setPlayerScore({ ...playerScore, draw: playerScore.draw + 1 })
             setSessionGame(
                 {
                     rounds: rounds,
@@ -132,9 +133,9 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) 
     return (
         <>
 
+            <h1 className='text-xl font-bold'>{`Round ${rounds}`}</h1>
 
-
-            <div className='mt-10'>
+            <div className='mt-6'>
                 <div className='flex justify-between flex-row font-bold pb-2 text-green-500'>
                     <div className=''>
                         {winner && winner !== 'Draw' && winner === `X`
@@ -170,8 +171,8 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) 
                         </div>
                     </div>
                     <div className='flex flex-col justify-center p-2 bg-gray-100 rounded-full'>
-                        <p className='text-gray-500'>Round {rounds}</p>
-                        <p className='text-gray-500'>VS</p>
+                        <p className='text-gray-500'>Draw</p>
+                        <p className='text-gray-500 text-2xl'>{playerScore.draw}</p>
                     </div>
 
 
