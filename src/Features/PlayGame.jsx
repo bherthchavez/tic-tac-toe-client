@@ -1,13 +1,15 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 
-
 import { useState } from 'react';
 import x from '../assets/x.png';
 import o from '../assets/o.png';
+import useApi from '../hooks/useAPI';
 
 
-const PlayGame = ({ playerNames, sessionGame, setSessionGame, setHistory, history, resetGame }) => {
+const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) => {
+
+    const { addToHistory } = useApi();
 
     const [board, setBoard] = useState(Array(9).fill(''));
     const [player, setPlayer] = useState('X');
@@ -40,9 +42,6 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, setHistory, histor
         [2, 4, 6]
     ];
 
-
-
-
     const checkWinner = (newBoard) => {
 
         for (let condition of winningConditions) {
@@ -53,17 +52,11 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, setHistory, histor
                 setPlayerScore(newBoard[a] === 'X' ? { ...playerScore, player1: playerScore.player1 + 1 } : { ...playerScore, player2: playerScore.player2 + 1 })
                 setSessionGame(
                     {
-                        round: rounds,
-                        player: [
-                            {
-                                name1: playerNames.player1,
-                                status: newBoard[a] === 'X' ? 'WON' : 'LOST'
-                            },
-                            {
-                                name2: playerNames.player2,
-                                status: newBoard[a] === 'O' ? 'WON' : 'LOST'
-                            }
-                        ],
+                        rounds: rounds,
+                        player1: playerNames.player1,
+                        player1Status: newBoard[a] === 'X' ? 'WON' : 'LOST',
+                        player2: playerNames.player2,
+                        player2Status: newBoard[a] === 'O' ? 'WON' : 'LOST',
                         date: getDate()
                     }
                 )
@@ -75,17 +68,11 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, setHistory, histor
             setWinner('Draw');
             setSessionGame(
                 {
-                    round: rounds,
-                    player: [
-                        {
-                            name1: playerNames.player1,
-                            status: 'DRAW'
-                        },
-                        {
-                            name2: playerNames.player2,
-                            status: 'DRAW'
-                        }
-                    ],
+                    rounds: rounds,
+                    player1: playerNames.player1,
+                    player1Status: 'DRAW',
+                    player2: playerNames.player2,
+                    player2Status: 'DRAW',
                     date: getDate()
                 }
             )
@@ -103,14 +90,32 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, setHistory, histor
         }
     };
 
-    const handlePlayAgain = () => {
+    const handlePlayAgain = async () => {
         setBoard(Array(9).fill(''));
         setWinner(null);
         setPlayer('X');
         setRounds(rounds + 1)
-        setHistory([...history, sessionGame])
+        await handleAddToHistory()
     };
 
+
+    const handleAddToHistory = async () => {
+        try {
+            await addToHistory(sessionGame)
+        } catch (error) {
+            console.log('Error adding history:', error);
+        }
+    }
+
+
+    const stopGame = async () => {
+        setBoard(Array(9).fill(''));
+        setWinner(null);
+        setPlayer('X');
+        setRounds(rounds + 1)
+        await handleAddToHistory()
+        handleExitGame()
+    }
 
 
 
@@ -193,24 +198,21 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, setHistory, histor
                 </div>
 
             </div>
-            <div className='flex flex-col items-center text-center'>
+            <div className='flex flex-col items-center text-center mt-4'>
                 {winner
-                    && <div className="">
-
-                        <div className='flex gap-2'>
-                            <button
-                                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-                                onClick={handlePlayAgain}
-                            >
-                                Continue
-                            </button>
-                            <button
-                                className="mt-4 px-4 py-2 bg-red-500 text-white rounded"
-                                onClick={resetGame}
-                            >
-                                Stop
-                            </button>
-                        </div>
+                    && <div className='flex gap-2 '>
+                        <button
+                            className="px-4 py-2 bg-blue-500 text-white rounded"
+                            onClick={handlePlayAgain}
+                        >
+                            Continue
+                        </button>
+                        <button
+                            className="px-4 py-2 bg-red-500 text-white rounded"
+                            onClick={stopGame}
+                        >
+                            Stop
+                        </button>
                     </div>
 
                 }

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-const SetupGame = ({ playerNames, setPlayerNames, setNewGame, handlePlayGame }) => {
+const SetupGame = ({ playerNames, setPlayerNames, handleExitGame, handlePlayGame }) => {
 
     const handleSetPlayerName = () => {
         if (playerNames.player1 == playerNames.player2 ) {
@@ -16,7 +16,7 @@ const SetupGame = ({ playerNames, setPlayerNames, setNewGame, handlePlayGame }) 
 
     return (
         <>
-            <div className='flex flex-col gap-3 text-center text-md'>
+            <div className='flex flex-col gap-3 text-center text-md mt-5'>
                 <div>
                     <h1 className='font-semibold'> Enter Players Name</h1>
                 </div>
@@ -33,15 +33,15 @@ const SetupGame = ({ playerNames, setPlayerNames, setNewGame, handlePlayGame }) 
                     value={playerNames.player2}
                 />
                 <button
-                    className='w-auto hover:bg-slate-800 bg-slate-950 text-gray-100 p-2 rounded-md'
+                    className={`${Object.values(playerNames).includes('') ? 'bg-gray-500 hover:bg-gray-600' : 'bg-green-500 hover:bg-green-600 '} w-auto  text-gray-100 p-2 rounded-md mt-10`}
                     onClick={handleSetPlayerName}
                 >
-                    { Object.values(playerNames).includes('')   ? 'Set Default Name' : 'Play'}</button>
+                    { Object.values(playerNames).includes('')   ? 'Set Default Name' : 'Play Game'}</button>
                 <button
-                    onClick={() => setNewGame(false)}
-                    className='w-auto hover:bg-blue-800 bg-blue-950 text-gray-100 p-2 rounded-md'
+                    onClick={handleExitGame}
+                    className='w-auto hover:bg-red-100 border border-red-600 text-red-700 p-2 rounded-md'
                 >
-                    Home</button>
+                    Cancel</button>
 
             </div>
         </>
