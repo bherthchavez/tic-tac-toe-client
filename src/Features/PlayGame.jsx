@@ -140,7 +140,7 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) 
                 : playerNames.player2} wins!` 
                 :  `Round ${rounds} `}`}</h1>
 
-            <div className='mt-6'>
+            <div className='mt-4'>
                 <div className='flex justify-between flex-row font-bold pb-2 text-green-500'>
                     <div className=''>
                         { !winner && player === `X`&& <p className='text-red-800'>Your Turn</p>}
@@ -199,11 +199,11 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) 
                     ))}
                 </div>
 
-            <div className='text-center mt-4'>
+            <div className='text-center mt-6'>
                 {winner
                     && <div className='flex flex-col gap-2'>
                         <button
-                            className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
+                            className="px-4 py-2 bg-green-500 hover:bg-gren-600 text-white rounded"
                             onClick={handlePlayAgain}
                         >
                             Continue
