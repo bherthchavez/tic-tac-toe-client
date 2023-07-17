@@ -73,7 +73,7 @@ function App() {
   return (
     <>
       <div className="flex flex-col items-center h-screen bg-slate-100 text-gray-900">
-        <div className="flex gap-2 px-20 sm:px-10 flex-row items-center justify-center text-3xl font-bold mb-7 italic w-full sm:w-72 sm:mt-4 h-16  "> 
+        <div className="flex gap-2 px-20 sm:px-10 flex-row items-center justify-center text-3xl font-bold mb-4 italic w-full sm:w-72 sm:mt-4 h-16  "> 
           <img className='w-auto h-auto' src={game} alt="game" />
         </div>
         {error

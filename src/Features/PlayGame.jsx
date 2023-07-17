@@ -199,25 +199,24 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) 
                     ))}
                 </div>
 
-            </div>
-            <div className='flex flex-col items-center text-center mt-4'>
+            <div className='text-center mt-4'>
                 {winner
-                    && <div className='flex gap-2 '>
+                    && <div className='flex flex-col gap-2'>
                         <button
-                            className="px-4 py-2 bg-blue-500 text-white rounded"
+                            className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
                             onClick={handlePlayAgain}
                         >
                             Continue
                         </button>
                         <button
-                            className="px-4 py-2 bg-red-500 text-white rounded"
+                            className="hover:bg-red-100 border-2 border-red-300 text-red-500 p-2 rounded-md"
                             onClick={stopGame}
                         >
                             Stop
                         </button>
                     </div>
-
                 }
+            </div>
             </div>
 
         </>

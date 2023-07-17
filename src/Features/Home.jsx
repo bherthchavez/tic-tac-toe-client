@@ -3,7 +3,7 @@
 const Home = ({ history, isLoading, handleClearHistory, setNewGame }) => {
   return (
     <>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 mt-5">
         <button
           onClick={() => setNewGame(true)}
           className="px-4  bg-blue-700 text-white  w-full py-2 rounded-md hover:bg-blue-600"
