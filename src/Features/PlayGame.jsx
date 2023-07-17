@@ -131,29 +131,22 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) 
     return (
         <>
 
-            <h1 className='text-xl font-bold'>{`Round ${rounds}`}</h1>
+            <h1 className={`${winner && winner !=='Draw' && 'text-green-600' } text-xl font-bold`}>{`${
+                winner && winner === 'Draw' 
+                ? 'Its a Draw!' 
+                : winner 
+                ? `${winner === 'X' 
+                ? playerNames.player1 
+                : playerNames.player2} wins!` 
+                :  `Round ${rounds} `}`}</h1>
 
             <div className='mt-6'>
                 <div className='flex justify-between flex-row font-bold pb-2 text-green-500'>
                     <div className=''>
-                        {winner && winner !== 'Draw' && winner === `X`
-                            ?
-                            <p>You Wins!</p>
-                            : !winner && player === `X`
-                                ? <p className='text-red-800'>Your Turn</p>
-
-                                : winner === 'Draw' && <p className='text-orange-600'>It's a draw!</p>
-                        }
-
+                        { !winner && player === `X`&& <p className='text-red-800'>Your Turn</p>}
                     </div>
                     <div>
-                        {winner && winner !== 'Draw' && winner === `O`
-                            ?
-                            <p>You Wins!</p>
-                            : !winner && player === `O`
-                                ? <p className='text-blue-800'>Your Turn</p>
-
-                                : winner === 'Draw' && <p className='text-orange-600'>It's a draw!</p>}
+                        {!winner && player === `O` && <p className='text-blue-800'>Your Turn</p>}
                     </div>
 
                 </div>
