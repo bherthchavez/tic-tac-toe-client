@@ -15,13 +15,13 @@ const Home = ({ history, isLoading, handleClearHistory, setNewGame }) => {
             <button
               className="font-bold text-xs text-gray-500"
               onClick={handleClearHistory}
-            >Clear History</button>
+            >Clear All</button>
           </div>
 
           <div className={`w-72 h-96 flex flex-col bg-gray-200 mt-2 overflow-y-auto`}>
             {isLoading
               ? <div className="flex flex-col m-auto text-center">
-                <p className="font-semibold">Loading ...</p>
+                <p className="font-semibold">Getting history...</p>
               </div>
 
               : history.length !== 0
