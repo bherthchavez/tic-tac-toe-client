@@ -203,7 +203,7 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) 
                 {winner
                     && <div className='flex flex-col gap-2'>
                         <button
-                            className="px-4 py-2 bg-green-500 hover:bg-gren-600 text-white rounded"
+                            className="p-2 border-2 border-green-500 hover:bg-green-600 bg-green-500 hover:bg-gren-600 text-white rounded"
                             onClick={handlePlayAgain}
                         >
                             Continue
