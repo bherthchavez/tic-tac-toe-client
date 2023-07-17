@@ -18,7 +18,7 @@ const Home = ({ history, isLoading, handleClearHistory, setNewGame }) => {
             >Clear All</button>
           </div>
 
-          <div className={`w-72 h-96 flex flex-col bg-gray-200 mt-2 rounded-lg overflow-y-auto`}>
+          <div className={`w-72 h-full flex flex-col bg-gray-200 mt-2 rounded-lg overflow-y-auto`}>
             {isLoading
               ? <div className="flex flex-row m-auto text-center">
                 <span className='mr-3 border-t-transparent border-solid animate-spin  rounded-full border-slate-400 border-2 h-6 w-6'></span>
@@ -50,8 +50,10 @@ const Home = ({ history, isLoading, handleClearHistory, setNewGame }) => {
                 </div>
             }
           </div>
-
-
+          <div className="text-xs flex flex-col items-center justify-center mt-4 sm:mt-7 text-gray-400">
+            <span className="text-[9px]">Developed By:  </span>
+            <span className="">Julbert Pruel </span>
+          </div>
         </div>
 
       </div>
