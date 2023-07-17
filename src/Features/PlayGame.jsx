@@ -184,7 +184,7 @@ const PlayGame = ({ playerNames, sessionGame, setSessionGame, handleExitGame }) 
                     {board.map((cell, index) => (
                         <button
                             key={index}
-                            className={`${cell === `X` ? `bg-red-200 border-0` : cell === `O` ? `bg-blue-200 border-0` : ` bg-gray-200`}  border-slate-300 gap-2   w-20 h-20 sm:w-28 sm:h-28 flex items-center justify-center text-4xl sm:text-5xl cursor-pointer text-gray-950`}
+                            className={`${cell === `X` ? `bg-red-200 border-0` : cell === `O` ? `bg-blue-200 border-0` : ` bg-gray-200`}  border-slate-300 gap-2   w-20 h-20 sm:w-28 sm:h-28 flex items-center justify-center text-4xl sm:text-5xl rounded-lg text-gray-950`}
                             onClick={() => handleCellClick(index)}
                             value={cell}
                         >
