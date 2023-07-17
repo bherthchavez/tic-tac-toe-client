@@ -20,8 +20,10 @@ const Home = ({ history, isLoading, handleClearHistory, setNewGame }) => {
 
           <div className={`w-72 h-96 flex flex-col bg-gray-200 mt-2 rounded-lg overflow-y-auto`}>
             {isLoading
-              ? <div className="flex flex-col m-auto text-center">
-                <p className="font-semibold">Getting history...</p>
+              ? <div className="flex flex-row m-auto text-center">
+                <span className='mr-3 border-t-transparent border-solid animate-spin  rounded-full border-slate-400 border-2 h-6 w-6'></span>
+                <p className="font-semibold text-sm">
+                  Getting history...</p>
               </div>
 
               : history.length !== 0
@@ -33,19 +35,19 @@ const Home = ({ history, isLoading, handleClearHistory, setNewGame }) => {
                     </div>
                     <div className="flex justify-between">
                       <h1>{game.player1}</h1>
-                      <h1 className={`${game.player1Status === 'WON' ? "text-green-600" : game.player1Status === 'DRAW' ?  "text-gray-600" : "text-red-600"} font-bold`}>{game.player1Status}</h1>
+                      <h1 className={`${game.player1Status === 'WON' ? "text-green-600" : game.player1Status === 'DRAW' ? "text-gray-600" : "text-red-600"} font-bold`}>{game.player1Status}</h1>
 
                     </div>
                     <div className="flex justify-between">
                       <h1>{game.player2}</h1>
-                      <h1 className={`${game.player2Status == 'WON' ? "text-green-600" : game.player1Status === 'DRAW' ?  "text-gray-600" : "text-red-600"} font-bold`}>{game.player2Status}</h1>
+                      <h1 className={`${game.player2Status == 'WON' ? "text-green-600" : game.player1Status === 'DRAW' ? "text-gray-600" : "text-red-600"} font-bold`}>{game.player2Status}</h1>
                     </div>
                   </div>
                 ))
-                  : <div className="flex flex-col m-auto text-center">
-                    <p className="font-semibold">Empty</p>
-                    <span className="text-xs text-gray-400">Start Playing Game</span>
-                  </div>
+                : <div className="flex flex-col m-auto text-center">
+                  <p className="font-semibold">Empty</p>
+                  <span className="text-xs text-gray-400">Start Playing Game</span>
+                </div>
             }
           </div>
 
