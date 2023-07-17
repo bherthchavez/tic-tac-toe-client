@@ -18,7 +18,7 @@ const Home = ({ history, isLoading, handleClearHistory, setNewGame }) => {
             >Clear All</button>
           </div>
 
-          <div className={`w-72 h-96 flex flex-col bg-gray-200 mt-2 overflow-y-auto`}>
+          <div className={`w-72 h-96 flex flex-col bg-gray-200 mt-2 rounded-lg overflow-y-auto`}>
             {isLoading
               ? <div className="flex flex-col m-auto text-center">
                 <p className="font-semibold">Getting history...</p>
