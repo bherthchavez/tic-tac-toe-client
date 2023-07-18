@@ -19,10 +19,11 @@ const Home = ({ history, isLoading, handleClearHistory, setNewGame }) => {
           </div>
 
           <div className={`w-72 h-full flex flex-col bg-gray-200 mt-2 rounded-lg overflow-y-auto`}>
+            
             {isLoading
-              ? <div className="flex flex-row m-auto text-center">
+              ? <div className="flex flex-row m-auto justify-center text-center">
                 <span className='mr-3 border-t-transparent border-solid animate-spin  rounded-full border-slate-400 border-2 h-6 w-6'></span>
-                <p className="font-semibold text-sm">
+                <p className="font-semibold text-sm pt-1">
                   Getting history...</p>
               </div>
 
